@@ -5,6 +5,9 @@ public class Posicion {
 //CREAMOS LOS ATRIBUTOS FILA Y COLUMNA
 	private int fila;
 	private char columna;
+	
+//GENERAMOS GETTERS AND SETTERS
+	
 	/**
 	 * @return the fila
 	 */
@@ -32,12 +35,25 @@ public class Posicion {
 	 */
 	private void setColumna(char columna) {
 		if (columna < 'a' || columna > 'h') {
-			throw new IllegalArgumentException ("ERROR: Columna no válida.");
+			throw new IllegalArgumentException ("ERROR: La columna no válida.");
 		}else {	
 			this.columna = columna;	
 		}
 	}
 	
-//GENERAMOS GETTERS AND SETTERS
-	
+//CREAMOS UN CONSTRUCTOR CON PARAMETROS DE ENTRADA
+	public Posicion (int fila, char columna) {
+		setFila(fila);
+		setColumna(columna);
+	}
+
+//CREAMOS UN CONSTRUCTOR COPIA
+	public Posicion (Posicion e) {
+		if (e == null) {
+			throw new NullPointerException("ERROR: No es posible copiar una posición nula.");
+		} else {
+			setFila(e.getFila());
+			setColumna(e.getColumna());
+		}
+	}
 }
